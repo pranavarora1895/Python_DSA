@@ -91,13 +91,13 @@ class LinkedQueue:
 
 
 if __name__ == '__main__':
-    # S = LinkedStack()
-    # S.push(4)
-    # print(S.top())
-    # S.push(67)
-    # print(S.top())
-    # S.pop()
-    # print(S.top())
+    S = LinkedStack()
+    S.push(4)
+    print(S.top())
+    S.push(67)
+    print(S.top())
+    S.pop()
+    print(S.top())
 
     Q = LinkedQueue()
     print(Q.is_empty())
