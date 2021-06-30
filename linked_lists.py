@@ -46,11 +46,64 @@ class LinkedStack:
         return answer
 
 
+class LinkedQueue:
+    class _Node:
+        __slots__ = '_element', '_next'
+
+        def __init__(self, element, next):
+            self._element = element
+            self._next = next
+
+    def __init__(self):
+        self._head = None
+        self._tail = None
+        self._size = 0
+
+    def __len__(self):
+        return self._size
+
+    def is_empty(self):
+        return self._size == 0
+
+    def first(self):
+        if self.is_empty():
+            raise ValueError('Empty Queue')
+        return self._head._element
+
+    def dequeue(self):
+        if self.is_empty():
+            raise ValueError('Empty Queue')
+        answer = self._head._element
+        self._head = self._head._next
+        self._size -= 1
+        if self.is_empty():
+            self._tail = None
+        return answer
+
+    def enqueue(self, e):
+        new_node = self._Node(e, None)
+        if self.is_empty():
+            self._head = new_node
+        else:
+            self._tail._next = new_node
+        self._tail = new_node
+        self._size += 1
+
+
 if __name__ == '__main__':
-    S = LinkedStack()
-    S.push(4)
-    print(S.top())
-    S.push(67)
-    print(S.top())
-    S.pop()
-    print(S.top())
+    # S = LinkedStack()
+    # S.push(4)
+    # print(S.top())
+    # S.push(67)
+    # print(S.top())
+    # S.pop()
+    # print(S.top())
+
+    Q = LinkedQueue()
+    print(Q.is_empty())
+    Q.enqueue(45)
+    print(Q.first())
+    Q.enqueue(67)
+    print(Q.first())
+    Q.dequeue()
+    print(Q.first())
