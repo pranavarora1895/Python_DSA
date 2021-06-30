@@ -12,6 +12,8 @@
 # L.size = L.size+1 {increment the node count}
 class LinkedStack:
     class _Node:
+        __slots__ = '_element', '_next'
+
         def __init__(self, element, next):
             self._element = element
             self._next = next
