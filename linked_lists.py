@@ -19,6 +19,7 @@ class LinkedStack:
             self._next = next
             # print(self._element)
             # print(self._next)
+
     def __init__(self):
         self._head = None
         self._size = 0
@@ -125,24 +126,22 @@ class CircularQueue:
             self._tail = None
         else:
             self._tail._next = oldhead._next
-        self._size-=1
+        self._size -= 1
         return oldhead._element
 
-    def enqueue(self,e):
-        newest = self._Node(e,None)
+    def enqueue(self, e):
+        newest = self._Node(e, None)
         if self.is_empty():
             newest._next = newest
         else:
             newest._next = self._tail._next
             self._tail._next = newest
         self._tail = newest
-        self._size+=1
+        self._size += 1
 
     def rotate(self):
         if self._size > 0:
             self._tail = self._tail._next
-
-
 
 
 if __name__ == '__main__':
