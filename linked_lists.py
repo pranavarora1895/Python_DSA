@@ -17,7 +17,8 @@ class LinkedStack:
         def __init__(self, element, next):
             self._element = element
             self._next = next
-
+            # print(self._element)
+            # print(self._next)
     def __init__(self):
         self._head = None
         self._size = 0
@@ -53,6 +54,8 @@ class LinkedQueue:
         def __init__(self, element, next):
             self._element = element
             self._next = next
+            # print(self._element)
+            # print(self._next)
 
     def __init__(self):
         self._head = None
@@ -90,20 +93,84 @@ class LinkedQueue:
         self._size += 1
 
 
-if __name__ == '__main__':
-    S = LinkedStack()
-    S.push(4)
-    print(S.top())
-    S.push(67)
-    print(S.top())
-    S.pop()
-    print(S.top())
+class CircularQueue:
+    class _Node:
+        __slots__ = '_element', '_next'
 
-    Q = LinkedQueue()
-    print(Q.is_empty())
-    Q.enqueue(45)
-    print(Q.first())
-    Q.enqueue(67)
-    print(Q.first())
-    Q.dequeue()
-    print(Q.first())
+        def __init__(self, element, next):
+            self._element = element
+            self._next = next
+
+    def __init__(self):
+        self._tail = None
+        self._size = 0
+
+    def __len__(self):
+        return self._size
+
+    def is_empty(self):
+        return self._size == 0
+
+    def first(self):
+        if self.is_empty():
+            raise ValueError("Empty Queue")
+        head = self._tail._next
+        return head._element
+
+    def dequeue(self):
+        if self.is_empty():
+            raise ValueError("Empty Queue")
+        oldhead = self._tail._next
+        if self._size == 1:
+            self._tail = None
+        else:
+            self._tail._next = oldhead._next
+        self._size-=1
+        return oldhead._element
+
+    def enqueue(self,e):
+        newest = self._Node(e,None)
+        if self.is_empty():
+            newest._next = newest
+        else:
+            newest._next = self._tail._next
+            self._tail._next = newest
+        self._tail = newest
+        self._size+=1
+
+    def rotate(self):
+        if self._size > 0:
+            self._tail = self._tail._next
+
+
+
+
+if __name__ == '__main__':
+    # S = LinkedStack()
+    # S.push(4)
+    # print(S.top())
+    # S.push(67)
+    # S.push(56)
+    # S.push(78)
+    # print(S.top())
+    # S.pop()
+    # print(S.top())
+
+    # Q = LinkedQueue()
+    # print(Q.is_empty())
+    # Q.enqueue(45)
+    # print(Q.first())
+    # Q.enqueue(67)
+    # print(Q.first())
+    # Q.dequeue()
+    # print(Q.first())
+
+    C = CircularQueue()
+    C.enqueue(56)
+    C.enqueue(23)
+    C.enqueue(78)
+    print(C.first())
+    C.rotate()
+    print(C.first())
+    C.dequeue()
+    print(C.first())
