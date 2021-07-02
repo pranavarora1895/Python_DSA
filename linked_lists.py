@@ -17,8 +17,8 @@ class LinkedStack:
         def __init__(self, element, next):
             self._element = element
             self._next = next
-            # print(self._element)
-            # print(self._next)
+            print(self._element)
+            print(self._next)
 
     def __init__(self):
         self._head = None
@@ -145,15 +145,26 @@ class CircularQueue:
 
 
 if __name__ == '__main__':
-    # S = LinkedStack()
-    # S.push(4)
-    # print(S.top())
-    # S.push(67)
-    # S.push(56)
-    # S.push(78)
-    # print(S.top())
-    # S.pop()
-    # print(S.top())
+    S = LinkedStack()
+    S.push(4)
+    print(S.top())
+    S.push(67)
+    S.push(56)
+    S.push(78)
+    print(S.top())
+    S.pop()
+    print(S.top())
+    print('-----------------------------')
+    K = LinkedStack()
+    K.push(89)
+    K.push(4)
+    print(S.top())
+    K.push(67)
+    K.push(56)
+    K.push(78)
+    print(S.top())
+    K.pop()
+    print(S.top())
 
     # Q = LinkedQueue()
     # print(Q.is_empty())
@@ -164,12 +175,12 @@ if __name__ == '__main__':
     # Q.dequeue()
     # print(Q.first())
 
-    C = CircularQueue()
-    C.enqueue(56)
-    C.enqueue(23)
-    C.enqueue(78)
-    print(C.first())
-    C.rotate()
-    print(C.first())
-    C.dequeue()
-    print(C.first())
+    # C = CircularQueue()
+    # C.enqueue(56)
+    # C.enqueue(23)
+    # C.enqueue(78)
+    # print(C.first())
+    # C.rotate()
+    # print(C.first())
+    # C.dequeue()
+    # print(C.first())
