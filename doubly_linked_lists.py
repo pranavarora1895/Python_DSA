@@ -147,6 +147,22 @@ class PositionalList(_DoublyLinkedList):
         return old_value
 
 
+def insertion_sort(L):
+    if len(L) > 1:
+        marker = L.first()
+        while marker != L.last():
+            pivot = L.after(marker)
+            value = pivot.element()
+            if value > marker.element():
+                marker = pivot
+            else:
+                walk = marker
+                while walk != L.first() and L.before(walk).element() > value:
+                    walk = L.before(walk)
+                L.delete(pivot)
+                L.add_before(walk, value)
+
+
 if __name__ == '__main__':
     Q = LinkedDeque()
     print(Q.is_empty())
@@ -160,3 +176,6 @@ if __name__ == '__main__':
     Q.delete_last()
     print(Q.last())
     print(Q.first() == Q.last())
+
+    L = PositionalList()
+    insertion_sort(L)
