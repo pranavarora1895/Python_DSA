@@ -177,5 +177,15 @@ if __name__ == '__main__':
     print(Q.last())
     print(Q.first() == Q.last())
 
+    # Sort the digits in a number using Positional Linked List
     L = PositionalList()
+    j = 572
+    while j != 0:
+        r = j % 10
+        L.add_first(r)
+        j //= 10
     insertion_sort(L)
+    str_num = ""
+    for i in L:
+        str_num += str(i)
+    print(str_num)
