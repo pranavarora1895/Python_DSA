@@ -53,3 +53,7 @@ class FavoritesList:
             item = walk.element()
             yield item._value
             walk = self._data.after(walk)
+
+if __name__ == '__main__':
+    A = FavoritesList()
+    print(getattr(A, 'top'))
