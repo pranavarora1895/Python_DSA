@@ -42,3 +42,17 @@ class TreeABC:
 
     def is_empty(self):
         return len(self) == 0
+
+    def depth(self, p):
+        """Return the number of levels separating Position p from the root."""
+        if p is self.root():
+            return 0
+        else:
+            return 1 + self.depth(self.parent(p))
+
+    def _height(self, p):
+        """Return the height of the subtree rooted at Position p"""
+        if self.is_leaf(p):
+            return 0
+        else:
+            return 1 + max(self._height(c) for c in self.children(p))
