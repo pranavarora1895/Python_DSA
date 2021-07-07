@@ -56,3 +56,9 @@ class TreeABC:
             return 0
         else:
             return 1 + max(self._height(c) for c in self.children(p))
+
+    def height(self, p=None):
+
+        if p is None:
+            p = self.root()
+        return self._height(p)
